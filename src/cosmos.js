@@ -29,8 +29,9 @@ const listen = async () => {
 
 const onSpaceTravelRequested = async ({ shuttleDb, cosmonautId }) => {
   const shuttles = await shuttleDb.read()
-  const availableShuttle = shuttles
-    .find(({ date, capacity }) => date >= 0 && capacity > 0)
+  const availableShuttle = shuttles.find(
+    ({ date, capacity }) => date >= 0 && capacity > 0
+  )
   if (!availableShuttle) {
     throw new Error(
       `unable to schedule cosmonautId ${cosmonautId}, no shuttles available`
